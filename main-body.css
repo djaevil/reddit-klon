@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+}
+
+#header-container {
+    height: 3rem;
+    margin-bottom: auto;
+    background-color: rgb(25, 25, 25);
+}
+
+#main-container {
+    display: flex;
+    min-height: 20rem;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.create-container {
+    height: 30rem;
+    width: 45rem;
+    margin: 1rem;
+}
+
+h2 {
+    height: 1.5rem;
+    padding: 1rem 0.2rem;
+    color: white;
+    font-size: 20px;
+    border-bottom: 1px solid rgb(50, 50, 50);
+}
+
+.create-section {
+    height: 25rem;
+    margin-top: 1rem;
+    background-color: rgb(25, 25, 25);
+}
