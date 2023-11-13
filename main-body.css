@@ -24,8 +24,8 @@ body {
     justify-content: center;
 }
 
-.create-container {
-    height: 12rem;
+.container {
+    min-height: 12rem;
     width: 45rem;
     margin: 1rem;
 }
@@ -43,3 +43,5 @@ h2 {
     margin-top: 1rem;
     background-color: rgb(25, 25, 25);
 }
+
+
