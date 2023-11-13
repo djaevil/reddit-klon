@@ -1,0 +1,24 @@
+#feed-posts {
+    height: fit-content;
+}
+
+.post-main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 8rem;
+    border-radius: 20px;
+    background-color: rgb(25, 25, 25);
+}
+
+.post-title {
+
+}
+
+.post-body {
+
+}
+
+.post-tags {
+
+}

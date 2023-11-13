@@ -1,7 +1,7 @@
 fetch('https://dummyjson.com/posts')
 .then(res => res.json())
 .then(data => {
-    localStorage.setItem("fetchedData", JSON.stringify());
+    localStorage.setItem("fetchedData", JSON.stringify(data));
     console.log("Data stored locally:", data);
 })
 .catch(error => console.error("Error fetching data:", error));
@@ -9,21 +9,25 @@ fetch('https://dummyjson.com/posts')
 const storedData = localStorage.getItem("fetchedData");
 
 if (storedData) {
-    let parsedData = JSON.parse(storedData);
-    let outputPosts = document.getElementById("feed-posts");
+    const parsedData = JSON.parse(storedData);
+    const feedPosts = document.getElementById("feed-posts");
     
-    parsedData.array.forEach(post => {
-        let postElement = document.createElement("div");
-        let postTitle = document.createElement("h3");
-        let postBody = document.createElement("p");
-        let postTags = document.createElement("span");
+    parsedData.forEach(post => {
+        const postElement = document.createElement("div");
+        const postTitle = document.createElement("h3");
+        const postBody = document.createElement("p");
+        const postTags = document.createElement("span")
 
         postElement.classList.add("post-main");
         postTitle.classList.add("post-title");
         postBody.classList.add("post-body");
         postTags.classList.add("post-tags");
 
-        outputPosts.appendChild(postElement);
+        postTitle.textContent = post.title;
+        postBody.textContent = post.body;
+        postTags.textContent = post.tags;
+        
+        feedPosts.appendChild(postElement);
         postElement.appendChild(postTitle, postBody, postTags);
     });
 } else {
