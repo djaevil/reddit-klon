@@ -6,7 +6,7 @@ fetch('https://dummyjson.com/posts')
 })
 .catch(error => console.error("Error fetching data:", error));
 
-let storedData = localStorage.getItem("fetchedData");
+const storedData = localStorage.getItem("fetchedData");
 
 if (storedData) {
     let parsedData = JSON.parse(storedData);
