@@ -27,8 +27,8 @@ if (storedData) {
         postBody.textContent = post.body;
         postTags.textContent = post.tags;
         
-        feedPosts.appendChild(postElement);
-        postElement.appendChild(postTitle, postBody, postTags);
+        feedPosts.append(postElement);
+        postElement.append(postTitle, postBody, postTags);
     });
 } else {
     console.log("No data found in local storage");
