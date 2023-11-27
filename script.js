@@ -16,7 +16,7 @@ if (storedData) {
         const postElement = document.createElement("div");
         const postTitle = document.createElement("h3");
         const postBody = document.createElement("p");
-        const postTags = document.createElement("span")
+        const postTags = document.createElement("ul")
 
         postElement.classList.add("post-main");
         postTitle.classList.add("post-title");
