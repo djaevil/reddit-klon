@@ -10,6 +10,7 @@
     width: 45rem;
     border-radius: 20px;
     background-color: rgb(25, 25, 25);
+    margin-top: 1rem;
 }
 
 .post-main h3, p, ul {
