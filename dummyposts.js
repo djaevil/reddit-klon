@@ -1,5 +1,5 @@
-function feedFunction() {
-  var feedPosts = document.getElementById("feed-posts");
+function postsFunction() {
+  var feedPosts = document.getElementById("posts-section");
   var parsedData = JSON.parse(localStorage.getItem("fetchedData"));
   var posts = parsedData.posts;
 
@@ -35,11 +35,11 @@ fetch("https://dummyjson.com/posts")
 
     if (dataString === localDataString) {
       console.log("Data already fetched");
-      return feedFunction();
+      return postsFunction();
     } else {
       localStorage.setItem("fetchedData", dataString);
       console.log("Data stored locally:", data);
-      return feedFunction();
+      return postsFunction();
     }
   })
   .catch((error) => console.error("Error fetching data:", error));

@@ -1,4 +1,4 @@
-#feed-posts {
+#posts-section {
     height: fit-content;
 }
 
@@ -7,7 +7,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     height: fit-content;
-    width: 45rem;
+    width: inherit;
     border-radius: 20px;
     background-color: rgb(25, 25, 25);
     margin-top: 1rem;
@@ -17,7 +17,6 @@
     color: white;
     margin: 1rem;
 }
-
 
 .post-title {
     font-size: 26px;

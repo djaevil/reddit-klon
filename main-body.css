@@ -8,23 +8,21 @@ body {
 }
 
 #header-container {
-    height: 3rem;
+    height: 4rem;
     margin-bottom: auto;
     background-color: rgb(25, 25, 25);
 }
 
 #main-container {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     min-height: 20rem;
-    width: 100%;
     margin-top: 1rem;
     justify-content: center;
 }
 
 .container {
-    width: 45rem;
+    width: 40rem;
     margin: 1rem;
 }
 
@@ -36,11 +34,5 @@ h2 {
     border-bottom: 1px solid rgb(50, 50, 50);
 }
 
-.create-section {
-    height: 5rem;
-    border-radius: 20px;
-    margin-top: 1rem;
-    background-color: rgb(25, 25, 25);
-}
 
 
