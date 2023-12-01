@@ -6,21 +6,23 @@
     <title>Readit</title>
     <link rel="stylesheet" href="main-body.css" />
     <link rel="stylesheet" href="posts.css" />
-    <link rel="stylesheet" href="createstyle.css" />
+    <link rel="stylesheet" href="create-post.css" />
   </head>
   <body>
     <header id="header-container"></header>
     <main id="main-container">
-      <div class="container">
-        <h2>Create a post</h2>
-        <section id="create-section"></section>
-      </div>
-      <div class="container">
+      <div class="left-container">
         <h2>Your feed</h2>
         <section id="posts-section"></section>
       </div>
+      <div class="right-container">
+        <h2>Create a post</h2>
+        <section id="create-section">
+          <input type="text" class="create-style title-create" placeholder="Title..." maxlength="40">
+          <textarea class="create-style body-create" cols="30" rows="6" placeholder="Text..." maxlength="300"></textarea>
+        </section>
+      </div>
     </main>
-
     <script src="dummyposts.js"></script>
     <script src="createposts.js"></script>
   </body>

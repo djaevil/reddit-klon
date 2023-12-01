@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -15,22 +16,17 @@ body {
 
 #main-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: nowrap;
     min-height: 20rem;
     margin-top: 1rem;
-    justify-content: center;
-}
-
-.container {
-    width: 40rem;
-    margin: 1rem;
 }
 
 h2 {
     height: 1.5rem;
     padding: 1rem 0.2rem;
     color: white;
-    font-size: 20px;
+    font-size: 26px;
     border-bottom: 1px solid rgb(50, 50, 50);
 }
 

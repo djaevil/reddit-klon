@@ -1,3 +1,8 @@
+.left-container {
+    width: 40rem;
+    margin: 1rem 5rem;
+}
+
 #posts-section {
     height: fit-content;
 }
@@ -8,7 +13,7 @@
     flex-wrap: wrap;
     height: fit-content;
     width: inherit;
-    border-radius: 20px;
+    border-radius: 5px;
     background-color: rgb(25, 25, 25);
     margin-top: 1rem;
 }
@@ -20,7 +25,6 @@
 
 .post-title {
     font-size: 26px;
-    text-decoration: underline;
 }
 
 .post-body {

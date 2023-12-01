@@ -1,0 +1,36 @@
+.right-container {
+    width: 30rem;
+    margin: 1rem 5rem;
+    margin-left: auto;
+}
+
+#create-section {
+    height: fit-content;
+    border-radius: 5px;
+    margin-top: 1rem;
+    background-color: rgb(25, 25, 25);
+}
+
+.create-style {
+    width: 28rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border: 2px solid rgb(50, 50, 50);
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+}
+
+.title-create {
+    font-size: 18px;
+}
+
+.body-create {
+    text-align: left;
+    font-size: 16px;
+    resize: none;
+}
+
+.tags-create {
+
+}
