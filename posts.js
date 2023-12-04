@@ -1,5 +1,5 @@
 function postsFunction() {
-  var feedPosts = document.getElementById("posts-section");
+  var feedPosts = document.getElementById("posts-section-div2");
   var parsedData = JSON.parse(localStorage.getItem("fetchedData"));
   var posts = parsedData.posts;
 
@@ -8,12 +8,11 @@ function postsFunction() {
     var postTitle = document.createElement("h3");
     var postBody = document.createElement("p");
     var postTags = document.createElement("ul");
-
     postElement.classList.add("post-main");
     postTitle.classList.add("post-title");
     postBody.classList.add("post-body");
     postTags.classList.add("post-tags");
-
+    
     postTitle.textContent = post.title;
     postBody.textContent = post.body;
 
