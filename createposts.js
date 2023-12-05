@@ -30,18 +30,23 @@ function userPosts(){
 let submitButton = document.getElementById("create-button");
 
 submitButton.addEventListener('click', function() {
-    let newPostTitle = document.getElementById("title-create").value;
-    let newPostBody = document.getElementById("body-create").value;
-    let newPostTag1 = document.getElementById("tag1-create").value;
-    let newPostTag2 = document.getElementById("tag2-create").value;
-    let newPostTag3 = document.getElementById("tag3-create").value;
+    let newPostTitle = document.getElementById("title-create");
+    let newPostBody = document.getElementById("body-create");
+    let newPostTag1 = document.getElementById("tag1-create");
+    let newPostTag2 = document.getElementById("tag2-create");
+    let newPostTag3 = document.getElementById("tag3-create");
     let newPost = {
-        title: newPostTitle,
-        body: newPostBody,
-        tags: [newPostTag1, newPostTag2, newPostTag3]
+        title: newPostTitle.value,
+        body: newPostBody.value,
+        tags: [newPostTag1.value, newPostTag2.value, newPostTag3.value]
     }
     let newPostString = JSON.stringify(newPost);
     localStorage.setItem("newPost", newPostString);
+    newPostTitle.value = "";
+    newPostBody.value = "";
+    newPostTag1.value = "";
+    newPostTag2.value = "";
+    newPostTag3.value = "";
     userPosts();
 });
 
