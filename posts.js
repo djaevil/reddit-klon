@@ -32,12 +32,12 @@ fetch("https://dummyjson.com/posts")
     var dataString = JSON.stringify(data);
     var localDataString = localStorage.getItem("fetchedData");
 
-    if (dataString === localDataString) {
-      console.log("Data already fetched");
+    if (localDataString === "") {
+      localStorage.setItem("fetchedData", dataString);
+      console.log("Data has been stored!");
       return postsFunction();
     } else {
-      localStorage.setItem("fetchedData", dataString);
-      console.log("Data stored locally:", data);
+      console.log("Data has already been stored!")
       return postsFunction();
     }
   })
