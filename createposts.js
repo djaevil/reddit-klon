@@ -9,14 +9,20 @@ function userPosts() {
     var postTitle = document.createElement("h3");
     var postBody = document.createElement("p");
     var postTags = document.createElement("ul");
+    var postReactions = document.createElement("div");
+    var reactionNum = document.createElement("i");
+
     postElement.classList.add("post-main");
     postTitle.classList.add("post-title");
     postBody.classList.add("post-body");
     postTags.classList.add("post-tags");
+    postReactions.classList.add("reactions");
+    reactionNum.classList.add("likes");
 
-    console.log(parsedData);
     postTitle.textContent = parsedData.title;
     postBody.textContent = parsedData.body;
+    postReactions.innerHTML = "<span class='material-symbols-outlined heart'>favorite</span>";
+    reactionNum.textContent = parseFloat(parsedData.reactions);
 
     parsedData.tags.forEach((tag) => {
       var tagItem = document.createElement("li");
@@ -28,7 +34,8 @@ function userPosts() {
       }
     });
     feedPosts.append(postElement);
-    postElement.append(postTitle, postBody, postTags);
+    postElement.append(postTitle, postBody, postTags, postReactions);
+    postReactions.append(reactionNum);
   }
 }
 
@@ -44,7 +51,9 @@ submitButton.addEventListener("click", function () {
     title: newPostTitle.value,
     body: newPostBody.value,
     tags: [newPostTag1.value, newPostTag2.value, newPostTag3.value],
+    reactions: 0,
   };
+  console.log(newPost);
   let newPostString = JSON.stringify(newPost);
   localStorage.setItem("1", newPostString);
   newPostTitle.value = "";
@@ -55,7 +64,8 @@ submitButton.addEventListener("click", function () {
   userPosts();
 });
 
-document.addEventListener("load", userPosts());
+document.addEventListener("DOMContentLoaded", userPosts());
+
 
 /*
 if (let i = 1; i <= localStorage.length; i++) {
@@ -65,6 +75,8 @@ if (let i = 1; i <= localStorage.length; i++) {
     localStorage.setItem("newPost" + num, newPostString);
     userPosts();
 }
+
+let fullLoad = document.addEventListener("DOMContentLoaded", userPosts());
 
 
 function loop() {
