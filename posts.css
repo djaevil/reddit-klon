@@ -56,18 +56,17 @@ li {
     margin: 1rem;
 }
 
-.likes {
-    color: white;
-    font-style: normal;
-    padding: 0 0.5rem;
-    font-size: 26px;
+.likeBtn {
     background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: transparent;
+    font-size: 0.5px;
 }
 
 .material-symbols-outlined {
     color: white;
     font-size: 34px;
-    cursor: pointer;
     font-variation-settings:
         'FILL' 0,
         'wght' 200,
@@ -75,9 +74,17 @@ li {
         'opsz' 24
 }
 
-.isLiked {
+.liked {
     color: red;
     font-variation-settings:
-    'FILL' 1
+        'FILL' 1
 }
 
+.likesNum {
+    color: white;
+    font-style: normal;
+    padding: 0 0.5rem;
+    font-size: 26px;
+    background-color: transparent;
+    margin-bottom: 5px;
+}

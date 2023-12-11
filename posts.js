@@ -9,6 +9,8 @@ function postsFunction() {
     var postBody = document.createElement("p");
     var postTags = document.createElement("ul");
     var postReactions = document.createElement("div");
+    var likeBtn = document.createElement("button");
+    var likeHeart = document.createElement("span");
     var reactionNum = document.createElement("i");
 
     postElement.classList.add("post-main");
@@ -16,11 +18,13 @@ function postsFunction() {
     postBody.classList.add("post-body");
     postTags.classList.add("post-tags");
     postReactions.classList.add("reactions");
-    reactionNum.classList.add("likes");
+    likeBtn.classList.add("likeBtn");
+    likeHeart.classList.add("material-symbols-outlined");
+    reactionNum.classList.add("likesNum");
 
     postTitle.textContent = post.title;
     postBody.textContent = post.body;
-    postReactions.innerHTML = "<span class='material-symbols-outlined heart'>favorite</span>";
+    likeHeart.textContent = "favorite";
     reactionNum.textContent = post.reactions;
 
     post.tags.forEach((tag) => {
@@ -28,9 +32,28 @@ function postsFunction() {
       tagItem.textContent = tag;
       postTags.append(tagItem);
     });
+
+    likeBtn.append(likeHeart);
+    likeBtn.addEventListener("click", function () {
+      post.liked = !post.liked;
+
+      if (post.liked) {
+        post.reactions++;
+        likeHeart.classList.add("liked");
+      } else {
+        post.reactions--;
+        likeHeart.classList.remove("liked");
+      }
+      reactionNum.textContent = post.reactions;
+      localStorage.setItem("fetchedData", JSON.stringify(parsedData));
+    });
+    if (post.liked) {
+      likeHeart.classList.add("liked");
+    }
+
     feedPosts.append(postElement);
     postElement.append(postTitle, postBody, postTags, postReactions);
-    postReactions.append(reactionNum);
+    postReactions.append(likeBtn, reactionNum);
   });
 }
 
@@ -45,20 +68,11 @@ fetch("https://dummyjson.com/posts")
       console.log("Data has been stored!");
       return postsFunction();
     } else {
-      console.log("Data has already been stored!")
+      console.log("Data has already been stored!");
       return postsFunction();
     }
   })
   .catch((error) => {
     postsFunction();
     console.error("Error fetching data:", error);
-  })
-  .finally(() => {
-    let hearts = document.querySelectorAll(".heart");
-    let likes = document.querySelectorAll(".likes");
-    hearts.forEach(function(span) {
-      span.addEventListener("click", function(){
-          console.log("It works!");
-      })
-    })
-  })
+  });
