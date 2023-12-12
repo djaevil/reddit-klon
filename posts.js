@@ -65,10 +65,10 @@ fetch("https://dummyjson.com/posts")
 
     if (localDataString === null) {
       localStorage.setItem("fetchedData", dataString);
-      console.log("DummyData has been stored!");
+      console.log("DummyJSON data has been stored!");
       return postsFunction();
     } else {
-      console.log("DummyData has already been stored!");
+      console.log("DummyJSON data has already been stored!");
       return postsFunction();
     }
   })

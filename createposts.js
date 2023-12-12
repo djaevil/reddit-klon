@@ -1,15 +1,17 @@
 function userPosts() {
   var feedPosts = document.getElementById("posts-section-div1");
 
-  if (localStorage.getItem("userPosts") === null) {
+  if ((JSON.parse(localStorage.getItem("userPosts"))).posts.length < 1) {
     return console.log("No user posts in local data");
   } else {
     var parsedData = JSON.parse(localStorage.getItem("userPosts"));
     var posts = parsedData.posts;
 
-    posts.forEach((posts) => {
+    posts.forEach((posts, index) => {
       var postElement = document.createElement("div");
       var postTitle = document.createElement("h3");
+      var deleteBtn = document.createElement("button");
+      var deleteIcon = document.createElement("span");
       var postBody = document.createElement("p");
       var postTags = document.createElement("ul");
       var postReactions = document.createElement("div");
@@ -19,6 +21,8 @@ function userPosts() {
 
       postElement.classList.add("post-main");
       postTitle.classList.add("post-title");
+      deleteBtn.classList.add("deleteBtn");
+      deleteIcon.classList.add("material-symbols-outlined");
       postBody.classList.add("post-body");
       postTags.classList.add("post-tags");
       postReactions.classList.add("reactions");
@@ -27,6 +31,7 @@ function userPosts() {
       reactionNum.classList.add("likesNum");
 
       postTitle.textContent = posts.title;
+      deleteIcon.textContent = "delete";
       postBody.textContent = posts.body;
       likeHeart.textContent = "favorite";
       reactionNum.textContent = posts.reactions;
@@ -39,6 +44,13 @@ function userPosts() {
         } else {
           postTags.append(tagItem);
         }
+      });
+
+      deleteBtn.append(deleteIcon);
+      deleteBtn.addEventListener("click", function() {  
+        parsedData.posts.splice(index, 1);
+        localStorage.setItem("userPosts", JSON.stringify(parsedData));
+        feedPosts.removeChild(postElement);  
       });
 
       likeBtn.append(likeHeart);
@@ -60,7 +72,7 @@ function userPosts() {
       }
 
       feedPosts.append(postElement);
-      postElement.append(postTitle, postBody, postTags, postReactions);
+      postElement.append(postTitle, deleteBtn, postBody, postTags, postReactions);
       postReactions.append(likeBtn, reactionNum);
     });
   }
