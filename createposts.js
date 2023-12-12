@@ -1,7 +1,7 @@
 function userPosts() {
   var feedPosts = document.getElementById("posts-section-div1");
 
-  if ((JSON.parse(localStorage.getItem("userPosts"))).posts.length < 1) {
+  if ((JSON.parse(localStorage.getItem("userPosts"))).posts.length === 0) {
     return console.log("No user posts in local data");
   } else {
     var parsedData = JSON.parse(localStorage.getItem("userPosts"));
@@ -47,6 +47,9 @@ function userPosts() {
       });
 
       deleteBtn.append(deleteIcon);
+
+      //Skapa function som kallar alla variables from deletebtn etc
+      //Fixa index syncing 
       deleteBtn.addEventListener("click", function() {  
         parsedData.posts.splice(index, 1);
         localStorage.setItem("userPosts", JSON.stringify(parsedData));
