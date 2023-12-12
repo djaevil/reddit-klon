@@ -36,7 +36,7 @@ function postsFunction() {
     likeBtn.append(likeHeart);
     likeBtn.addEventListener("click", function () {
       post.liked = !post.liked;
-
+      
       if (post.liked) {
         post.reactions++;
         likeHeart.classList.add("liked");
@@ -65,10 +65,10 @@ fetch("https://dummyjson.com/posts")
 
     if (localDataString === null) {
       localStorage.setItem("fetchedData", dataString);
-      console.log("Data has been stored!");
+      console.log("DummyData has been stored!");
       return postsFunction();
     } else {
-      console.log("Data has already been stored!");
+      console.log("DummyData has already been stored!");
       return postsFunction();
     }
   })
