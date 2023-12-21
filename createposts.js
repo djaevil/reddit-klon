@@ -1,11 +1,19 @@
-function userPosts() {
-  var feedPosts = document.getElementById("posts-section-div1");
+let feedPosts = document.getElementById("posts-section-div1");
+let submitButton = document.getElementById("create-button");
+let newPostTitle = document.getElementById("title-create");
+let newPostBody = document.getElementById("body-create");
+let newPostTag1 = document.getElementById("tag1-create");
+let newPostTag2 = document.getElementById("tag2-create");
+let newPostTag3 = document.getElementById("tag3-create");
 
-  if ((JSON.parse(localStorage.getItem("userPosts"))).posts.length === 0) {
-    return console.log("No user posts in local data");
+function userPosts() {
+  var parsedData = JSON.parse(localStorage.getItem("userPosts"));
+  var posts = parsedData.posts;
+
+  if (parsedData == null || posts.length === 0) {
+    return console.log("No user posts in local data!");
   } else {
-    var parsedData = JSON.parse(localStorage.getItem("userPosts"));
-    var posts = parsedData.posts;
+    console.log("There are " + posts.length + " user posts stored!");
 
     posts.forEach((posts, index) => {
       var postElement = document.createElement("div");
@@ -46,17 +54,13 @@ function userPosts() {
         }
       });
 
-      deleteBtn.append(deleteIcon);
-
-      //Skapa function som kallar alla variables from deletebtn etc
-      //Fixa index syncing 
       deleteBtn.addEventListener("click", function() {  
         parsedData.posts.splice(index, 1);
         localStorage.setItem("userPosts", JSON.stringify(parsedData));
         feedPosts.removeChild(postElement);  
+        location.reload()
       });
 
-      likeBtn.append(likeHeart);
       likeBtn.addEventListener("click", function () {
         posts.liked = !posts.liked;
 
@@ -76,21 +80,14 @@ function userPosts() {
 
       feedPosts.append(postElement);
       postElement.append(postTitle, deleteBtn, postBody, postTags, postReactions);
+      deleteBtn.append(deleteIcon);
       postReactions.append(likeBtn, reactionNum);
+      likeBtn.append(likeHeart);
     });
   }
 }
 
-let submitButton = document.getElementById("create-button");
-let feedPosts = document.getElementById("posts-section-div1");
-
 submitButton.addEventListener("click", function () {
-  let newPostTitle = document.getElementById("title-create");
-  let newPostBody = document.getElementById("body-create");
-  let newPostTag1 = document.getElementById("tag1-create");
-  let newPostTag2 = document.getElementById("tag2-create");
-  let newPostTag3 = document.getElementById("tag3-create");
-
   if (newPostTitle.value === "" || newPostBody.value === "") {
     window.alert("Please add Title and/or Main text!", "OK");
   } else {
@@ -102,7 +99,7 @@ submitButton.addEventListener("click", function () {
       liked: true,
     };
     
-    let parsedData = localStorage.getItem("userPosts") 
+    var parsedData = localStorage.getItem("userPosts") 
     ? JSON.parse(localStorage.getItem("userPosts"))
     : { posts: [] };
 

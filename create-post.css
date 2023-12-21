@@ -1,7 +1,6 @@
 .right-container {
     width: 30rem;
     margin: 1rem 5rem;
-    margin-left: auto;
 }
 
 #create-section {
@@ -39,13 +38,20 @@
     background-color: white;
     color: black;
     font-size: 16px;
+    font-weight: bold;
     padding: 0.7rem;
     box-sizing: border-box;
-    cursor: pointer;
+    box-shadow: 0 3px 5px;
     margin-bottom: 0.8rem;
+    cursor: pointer;
+}
+
+#create-button:hover {
+    background-color: rgb(200, 200, 200);
 }
 
 #create-button:active {
-    background-color: rgb(210, 210, 210);
     box-shadow: none;
+    margin-bottom: 0.6rem;
+    margin-top: 0.6rem;
 }
