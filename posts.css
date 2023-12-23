@@ -1,106 +1,103 @@
 .left-container {
-    width: 40rem;
-    margin: 1rem 5rem;
+  width: 40rem;
+  margin: 1rem 5rem;
 }
 
 #posts-section {
-    height: fit-content;
+  height: fit-content;
 }
 
 #posts-section-div1 {
-    display: flex;
-    flex-direction: column-reverse;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .post-main {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    height: fit-content;
-    border-radius: 5px;
-    background-color: rgb(25, 25, 25);
-    margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: fit-content;
+  border-radius: 5px;
+  background-color: rgb(25, 25, 25);
+  margin-top: 1rem;
 }
 
-.post-main h3, p, ul {
-    color: white;
-    margin: 1rem;
-    font-size: 26px;
+.post-main h3,
+p,
+ul {
+  color: white;
+  margin: 1rem;
+  font-size: 26px;
 }
 
 .post-title {
-    width: 34rem;
+  width: 34rem;
 }
 
 button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .deleteBtn {
-    margin: 1rem;
-    margin-left: auto;
+  margin: 1rem;
+  margin-left: auto;
 }
 
 .material-symbols-outlined {
-    color: white;
-    font-size: 34px;
-    font-variation-settings:
-        'FILL' 0,
-        'wght' 200,
-        'GRAD' 0,
-        'opsz' 24
+  color: white;
+  font-size: 34px;
+  font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 24;
 }
 
 .deleteBtn span {
-    font-size: 28px;
-    font-variation-settings: 
-        'wght' 250
+  font-size: 28px;
+  font-variation-settings: "wght" 250;
 }
 
 .post-body {
-    width: 38rem;
-    font-size: 22px;
-    margin-top: 0.5rem;
+  width: 38rem;
+  font-size: 22px;
+  margin-top: 0.5rem;
+  overflow-wrap: break-word;
 }
 
 .post-tags {
-    width: 19rem;
-    list-style-type: none;
-    margin-bottom: 1.5rem;
-    font-size: 20px;
+  width: 19rem;
+  list-style-type: none;
+  margin-bottom: 1.5rem;
+  font-size: 20px;
 }
 
 li {
-    display: inline-block;
-    background-color: black;
-    border-radius: 20px;
-    font-size: 20px;
-    padding: 0.7rem;
-    margin-right: 0.3rem;
-    text-transform: capitalize;
+  display: inline-block;
+  background-color: black;
+  border-radius: 20px;
+  font-size: 20px;
+  padding: 0.7rem;
+  margin-right: 0.3rem;
+  text-transform: capitalize;
 }
 
 .reactions {
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    width: 17rem;
-    margin: 1rem;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 17rem;
+  margin: 1rem;
 }
 
 .liked {
-    color: red;
-    font-variation-settings:
-        'FILL' 1
+  color: red;
+  font-variation-settings: "FILL" 1;
 }
 
 .likesNum {
-    color: white;
-    font-style: normal;
-    padding: 0 0.5rem;
-    font-size: 26px;
-    background-color: transparent;
-    margin-bottom: 5px;
+  color: white;
+  font-style: normal;
+  padding: 0 0.5rem;
+  font-size: 26px;
+  background-color: transparent;
+  margin-bottom: 5px;
 }

@@ -1,17 +1,17 @@
 function postsFunction() {
-  var feedPosts = document.getElementById("posts-section-div2");
-  var parsedData = JSON.parse(localStorage.getItem("fetchedData"));
-  var posts = parsedData.posts;
+  const feedPosts = document.getElementById("posts-section-div2");
+  const parsedData = JSON.parse(localStorage.getItem("fetchedData"));
+  const posts = parsedData.posts;
 
   posts.forEach((post) => {
-    var postElement = document.createElement("div");
-    var postTitle = document.createElement("h3");
-    var postBody = document.createElement("p");
-    var postTags = document.createElement("ul");
-    var postReactions = document.createElement("div");
-    var likeBtn = document.createElement("button");
-    var likeHeart = document.createElement("span");
-    var reactionNum = document.createElement("i");
+    const postElement = document.createElement("div");
+    const postTitle = document.createElement("h3");
+    const postBody = document.createElement("p");
+    const postTags = document.createElement("ul");
+    const postReactions = document.createElement("div");
+    const likeBtn = document.createElement("button");
+    const likeHeart = document.createElement("span");
+    const reactionNum = document.createElement("i");
 
     postElement.classList.add("post-main");
     postTitle.classList.add("post-title");
@@ -28,15 +28,14 @@ function postsFunction() {
     reactionNum.textContent = post.reactions;
 
     post.tags.forEach((tag) => {
-      var tagItem = document.createElement("li");
+      let tagItem = document.createElement("li");
       tagItem.textContent = tag;
       postTags.append(tagItem);
     });
 
-    likeBtn.append(likeHeart);
-    likeBtn.addEventListener("click", function () {
+    function handleLikeButton(post, parsedData, reactionNum) {
       post.liked = !post.liked;
-      
+
       if (post.liked) {
         post.reactions++;
         likeHeart.classList.add("liked");
@@ -44,9 +43,15 @@ function postsFunction() {
         post.reactions--;
         likeHeart.classList.remove("liked");
       }
+
       reactionNum.textContent = post.reactions;
       localStorage.setItem("fetchedData", JSON.stringify(parsedData));
+    }
+
+    likeBtn.addEventListener("click", function () {
+      handleLikeButton(post, parsedData, reactionNum);
     });
+
     if (post.liked) {
       likeHeart.classList.add("liked");
     }
@@ -54,25 +59,35 @@ function postsFunction() {
     feedPosts.append(postElement);
     postElement.append(postTitle, postBody, postTags, postReactions);
     postReactions.append(likeBtn, reactionNum);
+    likeBtn.append(likeHeart);
   });
 }
 
-fetch("https://dummyjson.com/posts")
-  .then((res) => res.json())
-  .then((data) => {
-    var dataString = JSON.stringify(data);
-    var localDataString = JSON.parse(localStorage.getItem("fetchedData"));
+function onPageLoad() {
+  const localDataString = localStorage.getItem("fetchedData");
 
-    if (localDataString === null) {
-      localStorage.setItem("fetchedData", dataString);
-      console.log("DummyJSON data has been stored!");
-      return postsFunction();
-    } else {
-      console.log("DummyJSON data has already been stored!");
-      return postsFunction();
-    }
-  })
-  .catch((error) => {
+  if (localDataString !== null) {
+    console.log("DummyJSON data has already been stored!");
     postsFunction();
-    console.error("Error fetching data:", error);
-  });
+  } else {
+    fetch("https://dummyjson.com/posts")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        const dataString = JSON.stringify(data);
+        localStorage.setItem("fetchedData", dataString);
+        console.log("DummyJSON data has been stored!");
+        postsFunction();
+      })
+      .catch((error) => {
+        postsFunction();
+        console.error("Error fetching data:", error);
+      });
+  }
+}
+
+document.addEventListener("DOMContentLoaded", onPageLoad);
